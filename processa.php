@@ -23,8 +23,8 @@ if ($arquivo['type'] == 'text/csv') {
         }
 
         array_walk_recursive($linha, 'converter');
- 
-        $query_csv = "INSERT INTO TableBaseDeDados (ticker, nome, preco, dy, p_l, p_vp, p_ativos, margem, margem_ebit, margem_liq, p_ebit, ev_ebit, divida_liquida_ebit, divida_liq_patrimonio, 
+
+        $query_csv = "INSERT INTO indicadores (ticker, nome, preco, dy, p_l, p_vp, p_ativos, margem, margem_ebit, margem_liq, p_ebit, ev_ebit, divida_liquida_ebit, divida_liq_patrimonio, 
         psr, p_cap_giro, p_at_circ, liq_corrente, roe, roa, roic, patrimonio_ativo, passivo_ativo, giro_ativo, cagr_receita_5_anos, cagr_lucro_5_anos, liquidez_media_diaria, vpa, lpa, peg_ration, valor_de_mercado) 
         VALUES(:ticker, :nome, :preco, :dy, :p_l, :p_vp, :p_ativos, :margem, :margem_ebit, :margem_liq, :p_ebit, :ev_ebit, :divida_liquida_ebit, :divida_liq_patrimonio, 
         :psr, :p_cap_giro, :p_at_circ, :liq_corrente, :roe, :roa, :roic, :patrimonio_ativo, :passivo_ativo, :giro_ativo, :cagr_receita_5_anos, :cagr_lucro_5_anos, :liquidez_media_diaria, :vpa, :lpa, :peg_ration, :valor_de_mercado)";
@@ -32,8 +32,8 @@ if ($arquivo['type'] == 'text/csv') {
 
         $arquivo_csv->bindValue(':ticker', $linha[0] ?? "");
         $arquivo_csv->bindValue(':nome', $linha[1] ?? "");
-        $arquivo_csv->bindValue(':preco', floatval(str_replace(',', '.', $linha[2])));   
-        $arquivo_csv->bindValue(':dy', floatval(str_replace(',', '.', $linha[3])));        
+        $arquivo_csv->bindValue(':preco', floatval(str_replace(',', '.', $linha[2])));
+        $arquivo_csv->bindValue(':dy', floatval(str_replace(',', '.', $linha[3])));
         $arquivo_csv->bindValue(':p_l', floatval(str_replace(',', '.', $linha[4])) ?? "0");
         $arquivo_csv->bindValue(':p_vp', floatval(str_replace(',', '.', $linha[5])) ?? "0");
         $arquivo_csv->bindValue(':p_ativos', floatval(str_replace(',', '.', $linha[6])) ?? "0");
@@ -53,7 +53,7 @@ if ($arquivo['type'] == 'text/csv') {
         $arquivo_csv->bindValue(':roic', floatval(str_replace(',', '.', $linha[20])) ?? "0");
         $arquivo_csv->bindValue(':patrimonio_ativo', floatval(str_replace(',', '.', $linha[21])) ?? "0");
         $arquivo_csv->bindValue(':passivo_ativo', floatval(str_replace(',', '.', $linha[22])) ?? "0");
-        $arquivo_csv->bindValue(':giro_ativo', floatval(str_replace(',', '.', $linha[23])) ?? "0");        
+        $arquivo_csv->bindValue(':giro_ativo', floatval(str_replace(',', '.', $linha[23])) ?? "0");
         $arquivo_csv->bindValue(':cagr_receita_5_anos', floatval(str_replace(',', '.', $linha[24])) ?? "0");
         $arquivo_csv->bindValue(':cagr_lucro_5_anos', floatval(str_replace(',', '.', $linha[25])) ?? "0");
         $arquivo_csv->bindValue(':liquidez_media_diaria', floatval(str_replace(',', '.', str_replace(['.', ' '], '', $linha[26]))) ?? "0");
@@ -72,7 +72,7 @@ if ($arquivo['type'] == 'text/csv') {
 
     }
 
-    
+
     $_SESSION['msg'] = "<p>$linhas_importadas  Linha(s) importada(s)!</p>";
     header("location:index.php");
 

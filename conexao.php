@@ -1,9 +1,9 @@
 <?php
 
-$serverName = "eixo1.database.windows.net";
-$database = "baseDeDadosEixo1";
+$serverName = "bdeixo1.database.windows.net";
+$database = "BaseDeDadosEixo1";
 $user = "grupo3";
-$pass = "Eixo1puc";
+$pass = "Eixo1BD*";
 
 try {
     $conn = new PDO("sqlsrv:server=$serverName;Database=$database", $user, $pass);
