@@ -1,9 +1,9 @@
 <?php
 
-$serverName = "eixo1.database.windows.net";
+$serverName = "bdeixo1.database.windows.net";
 $database = "baseDeDadosEixo1";
 $user = "grupo3";
-$pass = "Eixo1puc";
+$pass = "Eixo1BD*";
 
 try {
     $conn = new PDO("sqlsrv:server=$serverName;Database=$database", $user, $pass);
@@ -12,4 +12,5 @@ try {
 } catch (PDOException $e) {
     echo "Erro: " . $e->getMessage();
 }
+
 ?>

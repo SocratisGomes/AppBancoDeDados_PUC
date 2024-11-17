@@ -74,7 +74,7 @@ if ($arquivo['type'] == 'text/csv') {
 
 
     $_SESSION['msg'] = "<p>$linhas_importadas  Linha(s) importada(s)!</p>";
-    header("location:index.php");
+    header("location:enviaCSV.php");
 
 } else {
     echo "ENVIAR SOMENTE ARQUIVO CSV";
